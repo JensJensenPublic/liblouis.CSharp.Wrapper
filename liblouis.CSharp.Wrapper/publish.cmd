@@ -8,7 +8,7 @@ echo WARNING: ------------------------------------------------------------------
 echo WARNING: LibLouisWrapper.Publish.cmd is currently disabled. It must be enabled on first build after initial pull from GitHub and when the Liblouis installation files have been changed!  
 echo WARNING: ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 
-exit
+rem exit
 
 dir ..\..\..\ThirdPartyDlls\liblouis 
 

@@ -1,0 +1,150 @@
+EXPORTS
+    __add_to_environ @1
+    _lou_allocMem = _lou_allocMem@16 @2
+    _lou_allocMem@16 @3
+    _lou_backTranslate = _lou_backTranslate@56 @4
+    _lou_backTranslate@56 @5
+    _lou_charHash = _lou_charHash@4 @6
+    _lou_charHash@4 @7
+    _lou_charToFallbackDots = _lou_charToFallbackDots@4 @8
+    _lou_charToFallbackDots@4 @9
+    _lou_compileDisplayRule = _lou_compileDisplayRule@8 @10
+    _lou_compileDisplayRule@8 @11
+    _lou_compileTranslationRule = _lou_compileTranslationRule@8 @12
+    _lou_compileTranslationRule@8 @13
+    _lou_defaultTableResolver = _lou_defaultTableResolver@8 @14
+    _lou_defaultTableResolver@8 @15
+    _lou_extParseChars = _lou_extParseChars@8 @16
+    _lou_extParseChars@8 @17
+    _lou_extParseDots = _lou_extParseDots@8 @18
+    _lou_extParseDots@8 @19
+    _lou_findOpcodeName = _lou_findOpcodeName@4 @20
+    _lou_findOpcodeName@4 @21
+    _lou_findOpcodeNumber = _lou_findOpcodeNumber@4 @22
+    _lou_findOpcodeNumber@4 @23
+    _lou_getALine = _lou_getALine@4 @24
+    _lou_getALine@4 @25
+    _lou_getCharForDots = _lou_getCharForDots@8 @26
+    _lou_getCharForDots@8 @27
+    _lou_getDisplayTable = _lou_getDisplayTable@4 @28
+    _lou_getDisplayTable@4 @29
+    _lou_getDotsForChar = _lou_getDotsForChar@8 @30
+    _lou_getDotsForChar@8 @31
+    _lou_getTable = _lou_getTable@16 @32
+    _lou_getTable@16 @33
+    _lou_getTablePath = _lou_getTablePath@0 @34
+    _lou_getTablePath@0 @35
+    _lou_getTranslationTable = _lou_getTranslationTable@4 @36
+    _lou_getTranslationTable@4 @37
+    _lou_handlePassVariableAction = _lou_handlePassVariableAction@8 @38
+    _lou_handlePassVariableAction@8 @39
+    _lou_handlePassVariableTest = _lou_handlePassVariableTest@12 @40
+    _lou_handlePassVariableTest@12 @41
+    _lou_isValidMode = _lou_isValidMode@4 @42
+    _lou_isValidMode@4 @43
+    _lou_logMessage @44
+    _lou_logWidecharBuf = _lou_logWidecharBuf@16 @45
+    _lou_logWidecharBuf@16 @46
+    _lou_outOfMemory = _lou_outOfMemory@0 @47
+    _lou_outOfMemory@0 @48
+    _lou_pattern_check = _lou_pattern_check@24 @49
+    _lou_pattern_check@24 @50
+    _lou_pattern_compile = _lou_pattern_compile@24 @51
+    _lou_pattern_compile@24 @52
+    _lou_pattern_reverse = _lou_pattern_reverse@4 @53
+    _lou_pattern_reverse@4 @54
+    _lou_resetPassVariables = _lou_resetPassVariables@0 @55
+    _lou_resetPassVariables@0 @56
+    _lou_resolveTable = _lou_resolveTable@8 @57
+    _lou_resolveTable@8 @58
+    _lou_showAttributes = _lou_showAttributes@8 @59
+    _lou_showAttributes@8 @60
+    _lou_showDots = _lou_showDots@8 @61
+    _lou_showDots@8 @62
+    _lou_showString = _lou_showString@12 @63
+    _lou_showString@12 @64
+    _lou_stringHash = _lou_stringHash@12 @65
+    _lou_stringHash@12 @66
+    _lou_translate = _lou_translate@56 @67
+    _lou_translate@56 @68
+    _lou_unknownDots = _lou_unknownDots@4 @69
+    _lou_unknownDots@4 @70
+    clearenv @71
+    findRelevantRules @72
+    freea @73
+    getTable @74
+    hyphenationEnabled @75
+    isLetter @76
+    loadTable @77
+    lou_backTranslate = lou_backTranslate@44 @78
+    lou_backTranslate@44 @79
+    lou_backTranslateString = lou_backTranslateString@32 @80
+    lou_backTranslateString@32 @81
+    lou_charSize = lou_charSize@0 @82
+    lou_charSize@0 @83
+    lou_charToDots = lou_charToDots@20 @84
+    lou_charToDots@20 @85
+    lou_checkTable = lou_checkTable@4 @86
+    lou_checkTable@4 @87
+    lou_compileString = lou_compileString@8 @88
+    lou_compileString@8 @89
+    lou_dotsToChar = lou_dotsToChar@20 @90
+    lou_dotsToChar@20 @91
+    lou_findTable = lou_findTable@4 @92
+    lou_findTable@4 @93
+    lou_findTables = lou_findTables@4 @94
+    lou_findTables@4 @95
+    lou_free = lou_free@0 @96
+    lou_free@0 @97
+    lou_getDataPath = lou_getDataPath@0 @98
+    lou_getDataPath@0 @99
+    lou_getEmphClasses = lou_getEmphClasses@4 @100
+    lou_getEmphClasses@4 @101
+    lou_getProgramPath = lou_getProgramPath@0 @102
+    lou_getProgramPath@0 @103
+    lou_getTable = lou_getTable@4 @104
+    lou_getTable@4 @105
+    lou_getTableInfo = lou_getTableInfo@8 @106
+    lou_getTableInfo@8 @107
+    lou_getTypeformForEmphClass = lou_getTypeformForEmphClass@8 @108
+    lou_getTypeformForEmphClass@8 @109
+    lou_hyphenate = lou_hyphenate@20 @110
+    lou_hyphenate@20 @111
+    lou_indexTables = lou_indexTables@4 @112
+    lou_indexTables@4 @113
+    lou_listTables = lou_listTables@0 @114
+    lou_listTables@0 @115
+    lou_logEnd = lou_logEnd@0 @116
+    lou_logEnd@0 @117
+    lou_logFile = lou_logFile@4 @118
+    lou_logFile@4 @119
+    lou_logPrint @120
+    lou_readCharFromFile = lou_readCharFromFile@8 @121
+    lou_readCharFromFile@8 @122
+    lou_registerLogCallback = lou_registerLogCallback@4 @123
+    lou_registerLogCallback@4 @124
+    lou_registerTableResolver = lou_registerTableResolver@4 @125
+    lou_registerTableResolver@4 @126
+    lou_setDataPath = lou_setDataPath@4 @127
+    lou_setDataPath@4 @128
+    lou_setLogLevel = lou_setLogLevel@4 @129
+    lou_setLogLevel@4 @130
+    lou_translate = lou_translate@44 @131
+    lou_translate@44 @132
+    lou_translatePrehyphenated = lou_translatePrehyphenated@52 @133
+    lou_translatePrehyphenated@52 @134
+    lou_translateString = lou_translateString@32 @135
+    lou_translateString@32 @136
+    lou_version = lou_version@0 @137
+    lou_version@0 @138
+    mmalloca @139
+    printRule @140
+    rpl_free @141
+    rpl_malloc @142
+    rpl_realloc @143
+    setenv @144
+    strndup @145
+    suggestChunks @146
+    toDotPattern @147
+    toLowercase @148
+    translation_direction @149 DATA

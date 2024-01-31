@@ -1,0 +1,6 @@
+Den hurtige, brune ræv sprang over den dovne hund.
+1234567890
+abcdefghijklmnopqrstuvwxyzæøå
+ABCDEFGHIGKLMNOPQRSTUVWXYZÆØÅ
+1234567890abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUV
+1234567890abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ

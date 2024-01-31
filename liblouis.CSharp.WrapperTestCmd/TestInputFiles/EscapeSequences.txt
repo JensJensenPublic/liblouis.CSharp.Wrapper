@@ -1,0 +1,8 @@
+\a Bell
+\b Backspace
+\e Escape
+\f FormFeed
+\n NewLine
+\r Return
+\t HorizontalTab
+\v VerticalTab
