@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "liblouis.CSharp.Wrapper", "liblouis.CSharp.Wrapper\liblouis.CSharp.Wrapper.csproj", "{965A4174-DDA1-4C78-B663-369366F43051}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{965A4174-DDA1-4C78-B663-369366F43051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{965A4174-DDA1-4C78-B663-369366F43051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{965A4174-DDA1-4C78-B663-369366F43051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{965A4174-DDA1-4C78-B663-369366F43051}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8485B7D3-6884-43D3-869E-8C9591DBC460}
+	EndGlobalSection
+EndGlobal
