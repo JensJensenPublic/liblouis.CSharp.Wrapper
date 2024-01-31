@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.SqlServer.Server;
 using static System.Net.Mime.MediaTypeNames;
-using static LibLouisWrapper.Wrapper;
 
 namespace LibLouisWrapper
 {
@@ -43,6 +42,43 @@ namespace LibLouisWrapper
     /// 
     /// </summary>
 
+    /// <summary>
+    /// As defined in liblouis.h
+    /// </summary>
+    public enum TypeformEnum : ushort
+    {
+        plain_text = 0x0000,
+        italic = 0x0001,
+        underline = 0x0002,
+        bold = 0x0004,
+        emph_4 = 0x0008,
+        emph_5 = 0x0010,
+        emph_6 = 0x0020,
+        emph_7 = 0x0040,
+        emph_8 = 0x0080,
+        emph_9 = 0x0100,
+        emph_10 = 0x0200,
+        computer_braille = 0x0400,
+        no_translate = 0x0800,
+        no_contract = 0x1000,
+        // SYLLABLE_MARKER_1  0x2000,
+        // SYLLABLE_MARKER_1  0x4000
+        // CAPSEMPH  0x4000
+    }
+
+    //const TypeformEnum italic = TypeformEnum.emph_1;
+    //const TypeformEnum underline = TypeformEnum.emph_2;
+    //const TypeformEnum bold = TypeformEnum.emph_3;
+
+
+    [Flags]
+    public enum OptionsEnum
+    {
+        None = 0,           // Use this for published versions!
+        UseLogCallback = 1  // Use of the LibLouis LogCallback mechanism is konwn to cause nullreference exceptions turing heavy test and should only be used in a debug situation!
+                            // The exceptionis probably caused by the Garbage Collector moving the delegate, but should of course be further investigated!
+    }
+
     public class Wrapper : IDisposable
     {
 
@@ -62,34 +98,7 @@ namespace LibLouisWrapper
             PartialTrans = 256
         }
 
-        /// <summary>
-        /// As defined in liblouis.h
-        /// </summary>
-        public enum TypeformEnum : ushort
-        {
-            plain_text = 0x0000,
-            italic = 0x0001,
-            underline = 0x0002,
-            bold = 0x0004,
-            emph_4 = 0x0008,
-            emph_5 = 0x0010,
-            emph_6 = 0x0020,
-            emph_7 = 0x0040,
-            emph_8 = 0x0080,
-            emph_9 = 0x0100,
-            emph_10 = 0x0200,
-            computer_braille = 0x0400,
-            no_translate = 0x0800,
-            no_contract = 0x1000,
-            // SYLLABLE_MARKER_1  0x2000,
-            // SYLLABLE_MARKER_1  0x4000
-            // CAPSEMPH  0x4000
-        }
-
-        //const TypeformEnum italic = TypeformEnum.emph_1;
-        //const TypeformEnum underline = TypeformEnum.emph_2;
-        //const TypeformEnum bold = TypeformEnum.emph_3;
-
+    
 
         private readonly int depricatedModeParameter = 0;        
         private static int globalLibLouisErrorCount = 0;
@@ -532,13 +541,7 @@ namespace LibLouisWrapper
             Log(string.Format(": TEST {0}! Simulated error was {1} reported from LibLouis by{2} !", ok ? "PASSED" : "FAILED", ok ? "": "NOT", testItemName));       
         }
 
-        [Flags]
-        public enum OptionsEnum
-        {
-            None = 0,           // Use this for published versions!
-            UseLogCallback = 1  // Use of the LibLouis LogCallback mechanism is konwn to cause nullreference exceptions turing heavy test and should only be used in a debug situation!
-                                // The exceptionis probably caused by the Garbage Collector moving the delegate, but should of course be further investigated!
-        }
+     
 
 
         /// <summary>

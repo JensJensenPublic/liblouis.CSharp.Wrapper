@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibLouisWrapper;
-using static LibLouisWrapper.Wrapper;
 
 
 namespace LibLouisWrapperTestCmd
