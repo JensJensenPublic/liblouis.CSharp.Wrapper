@@ -51,6 +51,7 @@
     <Compile Include="TestHandlerForEnglish.cs" />
     <Compile Include="TestHandlerForTypeForm.cs" />
     <Compile Include="TestResult.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

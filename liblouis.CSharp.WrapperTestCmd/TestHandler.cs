@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using liblouis.CSharp.Wrapper;
-
+using liblouis.CSharp.WrapperTestCmd;
 
 namespace LibLouisWrapperTestCmd
 {
@@ -36,9 +36,10 @@ namespace LibLouisWrapperTestCmd
                
         }
 
-        protected void Log(string s)
+        protected void Log(string message)
         {
-            Console.WriteLine(s);  
+            string cm = Utilities.GetCallingMethod(1);
+            Console.WriteLine(string.Format("{0}{1}", cm, message));  
         }
 
         /// <summary>
@@ -47,7 +48,8 @@ namespace LibLouisWrapperTestCmd
         /// <param name="message"></param>
         public void OnWrapperLog(string message)
         {
-            Console.WriteLine(message);        
+            string cm = Utilities.GetCallingMethod(3);
+            Console.WriteLine(string.Format("{0}{1}",cm,message));        
         }
 
         /// <summary>
@@ -56,7 +58,8 @@ namespace LibLouisWrapperTestCmd
         /// <param name="message"></param>
         public void OnLibLouisLog(string message)
         {
-            Console.WriteLine(message);   
+            string cm = Utilities.GetCallingMethod(2);
+            Console.WriteLine(string.Format("{0}{1}", cm, message));   
         }
 
         protected TestHandler(string tableName, string testInputDir)
