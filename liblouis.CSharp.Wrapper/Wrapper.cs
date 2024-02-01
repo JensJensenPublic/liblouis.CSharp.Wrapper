@@ -350,8 +350,8 @@ namespace liblouis.CSharp.Wrapper
             output = null; 
             tfeOutput = null;
             if ((1 != result) && (!ignoreError)) return OnError( "1 != result");
-            if ((1 == result) && (outputLength == outBuf.Length)) return OnLengthError(outputLength);
             if (null == outBuf) return OnError("null == outBuf");
+            if ((1 == result) && OutputLengthIsKnown(nativeFunctionEnum) && (outputLength == outBuf.Length)) return OnLengthError(outputLength);  
             output = GetOutputString(nativeFunctionEnum, outBuf, outputLength, charSize);
             //Log(string.Format("({0},'{1}')='{2}'", nativeFunctionEnum, input, output));
             tfeOutput = GetOutputTypeForms(nativeFunctionEnum, tfeBuf, outputLength); 

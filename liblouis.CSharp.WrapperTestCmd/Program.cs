@@ -90,7 +90,7 @@ namespace LibLouisWrapperTestCmd
 #endif
                     
 
-#if false
+#if true
                     using (TestHandler testHandler = TestHandlerForDanish.Create(testInputDir))
                     {
                         localDanishResult = testHandler.ExecuteTests(); // The "using" clause will cause a call to Dispose()
