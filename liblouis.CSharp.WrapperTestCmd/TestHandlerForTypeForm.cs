@@ -1,4 +1,4 @@
-﻿using LibLouisWrapper;
+﻿using liblouis.CSharp.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -3,12 +3,14 @@ using System.ComponentModel;
 using System.Diagnostics.SymbolStore;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
+using liblouis.CSharp.Wrapper;
 using Microsoft.SqlServer.Server;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace LibLouisWrapper
+namespace liblouis.CSharp.Wrapper
 {
     /// <summary>
     /// Simple wrapper class for using the LibLouis library (LibLouis.dll) from C#
@@ -127,8 +129,7 @@ namespace LibLouisWrapper
         {
             globalLibLouisErrorCount++;
             if (ignoreError) return; // Do not log simulated  error generated for test-purposes !
-            Log(string.Format(": Received callback from LibLouis, describing an error: Level={0} Message={1}", level, message));
-
+            theClient.OnLibLouisLog(string.Format(": Received callback from LibLouis, describing an error: Level={0} Message={1}", level, message));
         }
         #endregion
 
@@ -474,9 +475,9 @@ namespace LibLouisWrapper
         }
 
 
-        private static void Log(string s)
+        private void Log(string s)
         {
-            Console.WriteLine(s);  // Replace with any logging mechanism             
+            theClient.OnWrapperLog(s); // Call logging mechanism established by the client 
         }
 
         /// <summary>
@@ -548,14 +549,15 @@ namespace LibLouisWrapper
         /// Only for preventing GC from collecting the delegate. MUST BE STATIC to keep the GC away !!
         /// See https://stackoverflow.com/questions/75223488/delegate-getting-gc-even-after-pinning
         /// </summary>
-        private static readonly Func myFunc = MyFunc; 
-
+        private static readonly Func myFunc = MyFunc;
+        private string tableNames;
   
         /// <summary>
         /// Private constructor. Use Wrapper.Create() from the outside.
         /// </summary>
         private Wrapper(string tableNames,OptionsEnum options)
         {
+            this.tableNames = tableNames;
             Log(string.Format(": TableNames='{0}'", tableNames));
             this.useLogCallback = (0 != (options & OptionsEnum.UseLogCallback));
             if (useLogCallback)
@@ -583,25 +585,25 @@ namespace LibLouisWrapper
         /// </summary>
         private Wrapper(){ }
 
-        private static bool OnCreationError(string s)
-        {
-            Log(s);
-            return false;
-        }
+        //private static bool OnCreationError(string s)
+        //{
+        //    Log(s);
+        //    return false;
+        //}
 
-        public static bool DirectoryExists(string path)
+        public bool DirectoryExists(string path)
         {
             if (Directory.Exists(path)) return true;
             return OnMissingItem("Directory", path);
         }
 
-        private static bool FileExists(string path)
+        private bool FileExists(string path)
         {
             if (File.Exists(path)) return true;
             return OnMissingItem("File", path);
         }
 
-        private static bool OnMissingItem(string itemType, string path)
+        private bool OnMissingItem(string itemType, string path)
         {
             Log(string.Format("{0} does not exist: '{1}'", itemType, path));
             return false;
@@ -612,7 +614,7 @@ namespace LibLouisWrapper
         /// </summary>
         /// <param name="tableNames"></param>
         /// <returns></returns>
-        private static bool CheckInstallation(string tableNames)
+        private bool CheckInstallation()
         {
             string executingDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             string liblouisDir = Path.Combine(executingDirectory, "liblouis");
@@ -656,12 +658,15 @@ namespace LibLouisWrapper
             }                   
         }
 
+        private static IClient theClient = null;
 
-        public static Wrapper Create(string tableNames, OptionsEnum options)
+        public static Wrapper Create(string tableNames, OptionsEnum options, IClient client)
         {
-            if (! CheckInstallation(tableNames)) return null;        
+            theClient = client; // Establish logging
+               
             Wrapper wrapper =  new Wrapper(tableNames,options);
-            return wrapper;
+            bool ok = wrapper.CheckInstallation();
+            return ok ? wrapper : null;
         }
 
     }

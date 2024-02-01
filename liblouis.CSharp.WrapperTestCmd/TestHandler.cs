@@ -4,14 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LibLouisWrapper;
+using liblouis.CSharp.Wrapper;
 
 
 namespace LibLouisWrapperTestCmd
 {
 
 
-    internal abstract class TestHandler : IDisposable
+    internal abstract class TestHandler : IDisposable, IClient
     {
         protected Wrapper libLouisWrapper;
 
@@ -41,11 +41,29 @@ namespace LibLouisWrapperTestCmd
             Console.WriteLine(s);  
         }
 
+        /// <summary>
+        /// Called by the Wrapper on its own initiative
+        /// </summary>
+        /// <param name="message"></param>
+        public void OnWrapperLog(string message)
+        {
+            Console.WriteLine(message);        
+        }
+
+        /// <summary>
+        /// Called by the Wrapper on behalf of the native LibLouis code through the LibLouis Callback mechanism
+        /// </summary>
+        /// <param name="message"></param>
+        public void OnLibLouisLog(string message)
+        {
+            Console.WriteLine(message);   
+        }
+
         protected TestHandler(string tableName, string testInputDir)
         {
             this.testInputDir = testInputDir;
             this.tableName = tableName; 
-            libLouisWrapper = Wrapper.Create(tableName, OptionsEnum.UseLogCallback); //  Danish table for 6 dots grade 2 forward and backward translation (2022) 
+            libLouisWrapper = Wrapper.Create(tableName, OptionsEnum.UseLogCallback, this as IClient); //  Danish table for 6 dots grade 2 forward and backward translation (2022) 
         }
 
         protected bool CheckWrapper()
