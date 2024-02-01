@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Net.NetworkInformation;
+using liblouis.CSharp.WrapperTestCmd;
 
 namespace LibLouisWrapperTestCmd
 {
@@ -10,17 +11,24 @@ namespace LibLouisWrapperTestCmd
     {
         static string testInputDir;
 
-        static private void Log(string s)
+        static private void LogCF(string message)
         {
-            Console.WriteLine(s);   
+            string cm = Utilities.GetCallingMethod(0);
+            Console.WriteLine(string.Format("{0}{1}", cm, message));   
         }
+
+        static private void Log(string message)
+        {
+            Console.WriteLine(message);
+        }
+
         private static bool CheckTestFileInstallation()
         {
             string executingDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             testInputDir = Path.Combine(executingDirectory, "TestInputFiles");
             if (!DirectoryExists(testInputDir)) return false;
             string[] testFiles = Directory.GetFiles(testInputDir);
-            Log(string.Format(": Found {0} testfiles in {1}:", testFiles.Length, testInputDir));
+            LogCF(string.Format(": Found {0} testfiles in {1}:", testFiles.Length, testInputDir));
             foreach (string testFile in testFiles)
             {
                 Log(string.Format("   {0}", Path.GetFileName(testFile)));
@@ -45,9 +53,9 @@ namespace LibLouisWrapperTestCmd
 
         static void Main(string[] args)
         {  
-            Log(": ---------------------------------------------------");
-            Log(string.Format(": Starting {0}",Environment.CommandLine.ToString()));
-            Log(string.Format("Setting Console.OutputEncoding to {0} in order do display Braille symbols",Encoding.Unicode));
+            LogCF(": ---------------------------------------------------");
+            LogCF(string.Format(": Starting {0}",Environment.CommandLine.ToString()));
+            LogCF(string.Format(": Setting Console.OutputEncoding to {0} in order do display Braille symbols",Encoding.Unicode));
             Console.OutputEncoding = Encoding.Unicode; 
 
             if (!CheckTestFileInstallation()) return; // No reason to continue
