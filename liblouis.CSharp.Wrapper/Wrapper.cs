@@ -360,7 +360,7 @@ namespace liblouis.CSharp.Wrapper
 
         /// <summary>
         /// If the length of the outputbuffer received from native code is known we use that information.
-        /// Otherwise we just remove any tariling null-vharacters.
+        /// Otherwise we just remove any trailing null-characters.
         /// </summary>
         /// <param name="nativeFunctionEnum"></param>
         /// <param name="output"></param>
