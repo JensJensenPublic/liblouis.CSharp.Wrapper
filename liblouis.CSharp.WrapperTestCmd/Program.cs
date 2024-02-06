@@ -126,6 +126,16 @@ namespace LibLouisWrapperTestCmd
             Log(string.Format(": Test completed: TestLoops={0} Successes={1} Errors={2} Differences={3}", overallTestLoops,   otr.Successes, otr.ErrorList.Count, otr.AllDiffs.Diffs.Count));
             Log(string.Format(": Number of errors reported by LibLouis={0}", overallLibLouisErrorCount));
 
+
+            StringBuilder sb = new StringBuilder(); 
+            int n = overallTestResult.AllDiffs.Diffs.Count;
+            foreach (Diff diff in overallTestResult.AllDiffs.Diffs)
+            {
+                sb.AppendLine( string.Format("{0,5} {1}",diff.Count,diff.Description));
+            }
+            string s = sb.ToString();
+            Log(string.Format(": Overall testresult: \r\nCount Description\r\n{0}",s));
+
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
