@@ -38,7 +38,7 @@ namespace LibLouisWrapperTestCmd
 
         protected void Log(string message)
         {
-            string cm = Utilities.GetCallingMethod(1);
+            string cm = Utilities.GetCallingMethod(0);
             Console.WriteLine(string.Format("{0}{1}", cm, message));  
         }
 
@@ -102,12 +102,11 @@ namespace LibLouisWrapperTestCmd
             Log(FormatTranslateResult("DotsToChar", dots, ok, newText));
 
             bool equal = (0 == string.Compare(text, newText));
-            string message = string.Format(": DotsToChars(CharsToDots(text)) {0} text", equal ? "==" : "<>");
-            Log(message);
+            string message = string.Format("DotsToChars(CharsToDots(text)) {0} text", equal ? "==" : "<>");
+            Log(": " + message);
             if (!equal)
             {
-#warning TODO FIX next line!
-                //testResult.ErrorList.Add(Logger.GetCF(message));
+                testResult.ErrorList.Add(message);
             }
             return equal;
         }
@@ -134,21 +133,21 @@ namespace LibLouisWrapperTestCmd
 
             bool equal = (0 == string.Compare(text, newText));
 
-            string messageStart = string.Format(": BackTranslateString(TranslateString(text))[{0}] {1} text[{2}]", text.Length, equal ? "==" : "<>", newText.Length);
-            string message;
+            string messageStart = string.Format("BackTranslateString(TranslateString(text))[{0}] {1} text[{2}]", text.Length, equal ? "==" : "<>", newText.Length);
+            string messageForLog;
             if (equal)
             {
-                message = string.Format("{0}='{1}'", messageStart, text); // Report successes in one line
+                messageForLog = string.Format("{0}='{1}'", messageStart, text); // Report successes in one line
                 testResult.Successes++;
             }
             else
             {
                 string diffReport = GetDiffReport(text, newText);
-                message = string.Format("{0}: {1}\r\n{2}\r\n{3}", messageStart, diffReport, text, newText); // Report failures in 3 lines
-#warning TODO fix next line
-                //testResult.ErrorList.Add(Logger.GetCF(message));
+                messageForLog = string.Format("{0}: {1}\r\n{2}\r\n{3}", messageStart, diffReport, text, newText); // Report failures in 3 lines
+                string messageForList = string.Format("{0}: {1}", messageStart, diffReport); // Report failures in 1 line
+                testResult.ErrorList.Add(messageForList);
             }
-            Log(message);
+            Log(": " + messageForLog);
             return equal;
         }
 
@@ -191,8 +190,7 @@ namespace LibLouisWrapperTestCmd
 
         protected void OnEndOfTestFiles(string language)
         {
-            Log(string.Format("\r\n\r\n>>>>>>>>>>(End of testFiles for {0})<<<<<<<<<<\r\n", language));
-            Log(string.Format(": Test {0} ****************************************************************************************************", testResult.Result ? "PASSED" : "FAILED"));
+            Log(string.Format(": >>>>>>>>>>>>>>>>>>>> End of testFiles for {0}. Test {1} <<<<<<<<<<<<<<<<<<<<", language, testResult.Result ? "PASSED" : "FAILED"));
             if (!testResult.Result)
             {
                 // In case of errors report any error information:
@@ -203,16 +201,9 @@ namespace LibLouisWrapperTestCmd
                     sb.AppendLine("  " + error);
                 }
                 string logString = sb.ToString();
-                Log(logString);
+                Log(logString.TrimEnd(new char[] { '\r', '\n' })); // Remove trailing cr lf
+              
             }
-
-            foreach (Diff diff in testResult.AllDiffs.Diffs)
-            {
-                string s = string.Format("{0,-45}: Count={1}", diff.Description, diff.Count);
-                Log(s);
-            }
-            Log(string.Format("Successes={0} Errors={1}", testResult.Successes, testResult.ErrorList.Count));
         }
-
     }
 }
