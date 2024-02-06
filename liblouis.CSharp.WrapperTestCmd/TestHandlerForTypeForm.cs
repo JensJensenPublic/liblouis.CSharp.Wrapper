@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
+#pragma warning disable IDE0018 // Inline variable declaration
+
+
 namespace LibLouisWrapperTestCmd
 {
     internal class TestHandlerForTypeForm : TestHandler
@@ -51,7 +54,7 @@ namespace LibLouisWrapperTestCmd
         public const TypeformEnum Underline = TypeformEnum.underline;
         public const TypeformEnum Bold = TypeformEnum.bold;
 
-        private TypeformEnum[] repeatedTypeformEnum(TypeformEnum tfe, int count)
+        private TypeformEnum[] RepeatedTypeformEnum(TypeformEnum tfe, int count)
         {
 
             TypeformEnum[] result = new TypeformEnum[count];
@@ -87,8 +90,7 @@ namespace LibLouisWrapperTestCmd
             Log(message);
             if (!equal)
             {
-#warning TODO Fix next line
-                //testResult.ErrorList.Add(Logger.GetCF(message));
+                testResult.ErrorList.Add(message);
             }
             return equal;
         }

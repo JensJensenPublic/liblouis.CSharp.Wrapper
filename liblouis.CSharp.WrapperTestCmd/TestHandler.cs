@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using liblouis.CSharp.Wrapper;
 using liblouis.CSharp.WrapperTestCmd;
 
+#pragma warning disable IDE0018 // Inline variable declaration
+
 namespace LibLouisWrapperTestCmd
 {
 

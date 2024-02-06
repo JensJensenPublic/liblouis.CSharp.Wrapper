@@ -14,7 +14,7 @@ namespace LibLouisWrapperTestCmd
             return new Diff(s);
         }
 
-        private string description;
+        private readonly string description;
         internal string Description { get { return description; } }
         private int count = 0;
         internal int Count { get { return count; } }
@@ -34,7 +34,7 @@ namespace LibLouisWrapperTestCmd
 
     internal class DiffList
     {
-        private List<Diff> diffs = new List<Diff>();
+        private readonly List<Diff> diffs = new List<Diff>();
         internal List<Diff> Diffs { get { return diffs; } }  
 
         private DiffList()

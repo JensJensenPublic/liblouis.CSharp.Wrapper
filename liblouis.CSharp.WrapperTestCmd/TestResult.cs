@@ -12,11 +12,11 @@ namespace LibLouisWrapperTestCmd
         private bool result = true;
         public bool Result { get { return result; } set { result = value;} }
 
-        private List<string> errorList = new List<string>(); 
+        private readonly List<string> errorList = new List<string>(); 
         public List<string> ErrorList { get { return errorList; } } 
         private int successes = 0;
         public int Successes { get { return successes; } set { successes = value; } }
-        private DiffList allDiffs = DiffList.Create();
+        private readonly DiffList allDiffs = DiffList.Create();
         public DiffList AllDiffs {  get { return allDiffs; } }
 
         public void AddRange(TestResult that)

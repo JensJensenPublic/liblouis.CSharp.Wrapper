@@ -42,7 +42,7 @@ namespace LibLouisWrapperTestCmd
 
         static TestResult localDanishResult;
         static TestResult localEnglishResult;
-        static TestResult localGermanResult;
+        // static TestResult localGermanResult;
         static TestResult localTypeFormResult;
 
         static TestResult overallTestResult; // For collecting results of all test
