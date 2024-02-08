@@ -244,22 +244,9 @@ namespace liblouis.CSharp.Wrapper
             return result;            
         }
 
-        private int GetOutputLength(int inputLength, NativeFunctionEnum nativeFunctionEnum)
+        private byte[] CreateOutputBuffer(int inBufLength)
         {
-            int defaultResult = Math.Max((inputLength * 2), 1024);  // Twice the inputbuffer size, but at least 1kB
-            switch (nativeFunctionEnum)
-            {
-                case NativeFunctionEnum.charsToDots: break;
-                case NativeFunctionEnum.dotsToChars: break;
-                case NativeFunctionEnum.translateStringTfe: break;
-                case NativeFunctionEnum.backTranslateStringTfe: break;
-            }
-            return defaultResult;
-        }
-
-        private byte[] CreateOutputBuffer(int inBufLength, NativeFunctionEnum nativeFunctionEnum)
-        {
-            int outputLength = GetOutputLength(inBufLength, nativeFunctionEnum);
+            int outputLength = Math.Max((inBufLength * 2), 1024);  // Always twice the inputbuffer size, but at least 1kB
             byte[] outBuf = new byte[outputLength];
             return outBuf;
         }
@@ -314,7 +301,7 @@ namespace liblouis.CSharp.Wrapper
         {  
             int inputLength = input.Length;          
             byte[] inBuf = encoding.GetBytes(input);
-            byte[] outBuf = CreateOutputBuffer(inBuf.Length, nativeFunctionEnum);          
+            byte[] outBuf = CreateOutputBuffer(inBuf.Length);          
             TypeformEnum[] tfeBuf = CreateTfeBuffer(input.Length, nativeFunctionEnum, tfeInput);
             int outputLength = outBuf.Length;
             int result = 0;
