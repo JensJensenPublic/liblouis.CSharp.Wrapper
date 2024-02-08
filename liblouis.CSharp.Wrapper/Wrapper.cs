@@ -298,13 +298,15 @@ namespace liblouis.CSharp.Wrapper
         /// <param name="tfeOutput">Optional TypeForm-output from the native function. May be null</param>
         /// <returns></returns>
         private bool CommonNativeCall(NativeFunctionEnum nativeFunctionEnum, string input, out string output, in TypeformEnum[] tfeInput, out TypeformEnum[] tfeOutput)
-        {  
-            int inputLength = input.Length;          
+        {
+            int result = 0; 
+            // The following 3 buffers are owned by managed code and passed to native code. They are pinned by the "fixed" clause.
             byte[] inBuf = encoding.GetBytes(input);
             byte[] outBuf = CreateOutputBuffer(inBuf.Length);          
             TypeformEnum[] tfeBuf = CreateTfeBuffer(input.Length, nativeFunctionEnum, tfeInput);
+            // The following 2 integers are owned by managed code and passed to native code. They don't need pinning, because they are simple stack-variables.
+            int inputLength = input.Length;
             int outputLength = outBuf.Length;
-            int result = 0;
             unsafe
             {
                 IntPtr inPtr = new IntPtr(&inputLength);
