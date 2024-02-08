@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 using liblouis.CSharp.Wrapper;
@@ -28,7 +29,13 @@ namespace LibLouisWrapperTestCmd
 
         protected TestResult testResult = TestResult.Create();
 
+        private string currentTestFileName = "";
+        internal string CurrentTestFileName { get { return currentTestFileName; } }
+
         internal abstract TestResult ExecuteTests();
+
+
+        internal abstract string GetTestSubject(); 
 
         internal int GlobalLibLouisErrorCount {get{ return Wrapper.GlobalLibLouisErrorCount; } }
 
@@ -164,7 +171,11 @@ namespace LibLouisWrapperTestCmd
                     char c0 = t0[i];
                     char c1 = t1[i];
                     string diff = string.Format("(Chars:'{0}' <> '{1}')   (Integers:{2} <> {3})", c0, c1, (int)c0, (int)c1);
-                    testResult.AllDiffs.Add(diff);
+                    // Get a variety of information for generating the string describing the difference
+                    string cf = Utilities.GetCallingMethod(0); // ClassName and FunctionName for the method calling GetDiffReport
+                    string subject = this.GetTestSubject();
+                    string fileName = Path.GetFileName(CurrentTestFileName); 
+                    testResult.AllDiffs.Add(cf + " " + subject + " " + fileName + " " + diff);
                     return string.Format("First diff found at index {0}: {1}", i, diff);
 
                 }
@@ -179,6 +190,7 @@ namespace LibLouisWrapperTestCmd
 
         protected bool RunTestFile(string fullFileName)
         {
+            this.currentTestFileName = fullFileName; 
             bool result = true;
             Log(string.Format("\r\n\r\n>>>>>>>>>>TestFileName='{0}'<<<<<<<<<<\r\n", Path.GetFileName(fullFileName)));
             string[] lines = File.ReadAllLines(fullFileName);

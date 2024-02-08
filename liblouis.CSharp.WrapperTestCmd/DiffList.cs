@@ -24,7 +24,7 @@ namespace LibLouisWrapperTestCmd
             count++;
         }
 
-        internal Diff(string s)
+        private Diff(string s)
         {
             description = s;
             count = 1;
@@ -66,7 +66,7 @@ namespace LibLouisWrapperTestCmd
             }
             else
             {
-                diff = new Diff(s);
+                diff = Diff.Create(s);
                 diffs.Add(diff);
             }
             return diff.Count;          

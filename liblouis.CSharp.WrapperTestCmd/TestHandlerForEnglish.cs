@@ -17,6 +17,8 @@ namespace LibLouisWrapperTestCmd
         TestHandlerForEnglish(string testInputDir) : base(UnifiedEnglishBrailleGrade2,testInputDir)
         {}
 
+        internal override string GetTestSubject() { return "English "; }
+
         internal override TestResult ExecuteTests()
         {
             Log("+");

@@ -36,6 +36,8 @@ namespace LibLouisWrapperTestCmd
         TestHandlerForTypeForm(string table, string testInputDir) : base(table, testInputDir)
         { }
 
+        internal override string GetTestSubject() { return "TypeForm"; }
+
         private bool TranslateStringTFE(string text, out string dots, TypeformEnum[] tfs)
         {
             bool result = libLouisWrapper.TranslateStringTFE(text, out dots, tfs);

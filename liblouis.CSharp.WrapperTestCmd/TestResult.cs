@@ -23,6 +23,11 @@ namespace LibLouisWrapperTestCmd
         {
             this.errorList.AddRange(that.errorList);
             this.successes += that.successes;
+            if (that.AllDiffs.Diffs.Count != 0)
+            {
+                int r = 0;
+            }
+
             this.allDiffs.AddRange(that.allDiffs);
         }
 

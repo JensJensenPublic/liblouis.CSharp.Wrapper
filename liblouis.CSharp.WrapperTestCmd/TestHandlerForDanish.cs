@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,8 @@ namespace LibLouisWrapperTestCmd
         {
             return new TestHandlerForDanish(testInputDir);
         }
+
+        internal override string GetTestSubject() { return "Danish  "; }
 
         TestHandlerForDanish(string testInputDir) : base(DanishBrailleGrade2, testInputDir) //  Danish table for 6 dots grade 2 forward and backward translation (2022)
         {}
