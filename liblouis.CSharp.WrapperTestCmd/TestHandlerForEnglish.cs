@@ -39,7 +39,7 @@ namespace LibLouisWrapperTestCmd
 
             testResult.Result &= RunTestFile(Path.Combine(testInputDir, "EscapeSequences.txt"));
             testResult.Result &= RunTestFile(Path.Combine(testInputDir, "SpecialCharacters.txt")); // ";" will fail !
-            //testResult.Result &= RunTestFile(Path.Combine(testInputDir, "English.txt")); // Through the mirror
+            testResult.Result &= RunTestFile(Path.Combine(testInputDir, "English.txt")); // Through the mirror
 
 
             OnEndOfTestFiles("English");
