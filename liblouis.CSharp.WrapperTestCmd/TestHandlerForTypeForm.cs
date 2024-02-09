@@ -100,7 +100,7 @@ namespace LibLouisWrapperTestCmd
 
         private string FormatTranslateResultTFE(string method, string input, bool result, string output, TypeformEnum[] tfe)
         {
-            return string.Format(": {0}('{1}') returned {2}. Tfe.Length={3} Output[{4}]={5}) ", method, input, result, tfe, output.Length, output);
+            return string.Format(": {0}('{1}') returned {2}. Tfe.Length={3} Output[{4}]={5}) ", method, input, result, tfe.Length, output.Length, output);
         }
 
 
