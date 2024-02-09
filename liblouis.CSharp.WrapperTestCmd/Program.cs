@@ -64,8 +64,8 @@ namespace LibLouisWrapperTestCmd
                 for (int i = 0; i < 1; i++) // Prepare for "endurance" test
                 {
 #if true
-                    // Test for handling FormTypeForms
-                    using (TestHandler testHandler = TestHandlerForTypeForm.Create(TestHandler.UnifiedEnglishBrailleGrade2,testInputDir))
+                    // Test for handling FormTypeForms            
+                    using (TestHandler testHandler = TestHandlerForTypeForm.Create(TestHandler.DanishBrailleGrade2, testInputDir))
                     {
                         localTypeFormResult = testHandler.ExecuteTests(); // The "using" clause will cause a call to Dispose()
                         overallTestResult.AddRange(localTypeFormResult);
