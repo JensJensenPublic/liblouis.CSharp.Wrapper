@@ -65,7 +65,8 @@ namespace LibLouisWrapperTestCmd
                 {
 #if true
                     // Test for handling FormTypeForms            
-                    using (TestHandler testHandler = TestHandlerForTypeForm.Create(TestHandler.DanishBrailleGrade2, testInputDir))
+                    //using (TestHandler testHandler = TestHandlerForTypeForm.Create(TestHandler.DanishBrailleGrade2, testInputDir)) //  Bold, Italics and Underline are handled in the same way
+                    using (TestHandler testHandler = TestHandlerForTypeForm.Create(TestHandler.UnifiedEnglishBrailleGrade2, testInputDir)) //  Bold, Italics and Underline are handled in different ways
                     {
                         localTypeFormResult = testHandler.ExecuteTests(); // The "using" clause will cause a call to Dispose()
                         overallTestResult.AddRange(localTypeFormResult);
