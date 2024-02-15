@@ -66,6 +66,7 @@ namespace liblouis.CSharp.Wrapper
         // SYLLABLE_MARKER_1  0x2000,
         // SYLLABLE_MARKER_1  0x4000
         // CAPSEMPH  0x4000
+        Hex5c5c = 0x5c5c, // NOTE: For debugging only !!
     }
 
     //const TypeformEnum italic = TypeformEnum.emph_1;
@@ -253,9 +254,15 @@ namespace liblouis.CSharp.Wrapper
 
 
         private TypeformEnum[] CreateTfeBuffer(int inputLength, NativeFunctionEnum nativeFunctionEnum, TypeformEnum[] tfeInput)
-        {         
+        {
+            // Developer's note: By initializing "result" to TypeformEnum.Hex5c5c instead of the default TypeFormEnum.plain_text (0x0000) it is easily verified
+            // that lou_backTranslateString() when called with  "out TypeformEnum[] tfe" where tfe != null initializes the first half of the buffer to the value 0x3030
+            // and leaves the last half of the buffer untouched.
+            // This suggests some kind of mismatch between the managed code and the native code:  Maybe the native code attempts to initialize the whole buffer to 0x30 ?
+            // (The expected behavior would be to use only the values  plain_text = 0x0000, italic = 0x0001, underline = 0x0002 and  bold = 0x0004 )
             int length = GetTfeLength(inputLength, nativeFunctionEnum);
             TypeformEnum[] result = new TypeformEnum[length];
+            for (int i = 0; i < length; i++) { result[i] = TypeformEnum.Hex5c5c; } // For debugging only !
             if ((null != tfeInput) && (tfeInput.Length <= length))
             {
                 Array.Copy(tfeInput, result, tfeInput.Length); // Copy to the common buffer to be passed to native code
