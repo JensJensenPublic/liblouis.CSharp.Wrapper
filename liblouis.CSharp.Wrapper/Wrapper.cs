@@ -103,7 +103,7 @@ namespace liblouis.CSharp.Wrapper
 
     
 
-        private readonly int depricatedModeParameter = 0;        
+            
         private static int globalLibLouisErrorCount = 0;
         /// <summary>
         /// // Counts errors reported from LibLouis dll and is used for checking the Logger Callback mechanism
@@ -111,7 +111,7 @@ namespace liblouis.CSharp.Wrapper
         public static int GlobalLibLouisErrorCount { get { return globalLibLouisErrorCount; } }
 
         const int translationMode = (int)(TranslationModeEnum.NoUndefined | TranslationModeEnum.UnicodeBraille | TranslationModeEnum.DotsIO); // Common for all member functions
-        const int translationMode1 = (int)(TranslationModeEnum.UnicodeBraille); // For experiment
+        const int backtranslationMode = 0; // The "mode" parameter is depricated during backtranslation and must be set to 0 !!
 
         /// <summary>
         /// Path to be combined with tableName before passing to LibLouis
@@ -325,11 +325,11 @@ namespace liblouis.CSharp.Wrapper
                         switch (nativeFunctionEnum)
                         {
                             case NativeFunctionEnum.charsToDots: result = lou_charToDots(tablePaths, inBuf, outBuf, inputLength, translationMode); break;
-                            case NativeFunctionEnum.dotsToChars: result = lou_dotsToChar(tablePaths, inBuf, outBuf, inputLength, depricatedModeParameter); break;
+                            case NativeFunctionEnum.dotsToChars: result = lou_dotsToChar(tablePaths, inBuf, outBuf, inputLength, backtranslationMode); break;
                             case NativeFunctionEnum.translateString:        result = lou_translateString(tablePaths, inBuf, inPtr, outBuf, outPrt, null, null, translationMode); break;
                             case NativeFunctionEnum.translateStringTfe:     result = lou_translateString(tablePaths, inBuf, inPtr, outBuf, outPrt, tfeBuf, null, translationMode); break;
-                            case NativeFunctionEnum.backTranslateString:    result = lou_backTranslateString(tablePaths, inBuf, inPtr, outBuf, outPrt, null, null, depricatedModeParameter); break;
-                            case NativeFunctionEnum.backTranslateStringTfe: result = lou_backTranslateString(tablePaths, inBuf, inPtr, outBuf, outPrt, tfeBuf, null, depricatedModeParameter); break;
+                            case NativeFunctionEnum.backTranslateString:    result = lou_backTranslateString(tablePaths, inBuf, inPtr, outBuf, outPrt, null, null, backtranslationMode); break;
+                            case NativeFunctionEnum.backTranslateStringTfe: result = lou_backTranslateString(tablePaths, inBuf, inPtr, outBuf, outPrt, tfeBuf, null, backtranslationMode); break;
                         }
                         fixed (byte* pInBufAfter = inBuf, pOutBufAfter = outBuf)
                         {
