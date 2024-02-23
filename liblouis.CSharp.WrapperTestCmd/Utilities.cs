@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace liblouis.CSharp.WrapperTestCmd
+namespace LibLouisWrapperTestCmd
 {
     internal class Utilities
     {

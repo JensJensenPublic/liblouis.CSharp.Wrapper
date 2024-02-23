@@ -6,11 +6,10 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
-using liblouis.CSharp.Wrapper;
 using Microsoft.SqlServer.Server;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace liblouis.CSharp.Wrapper
+namespace LibLouisWrapper
 {
     /// <summary>
     /// Simple wrapper class for using the LibLouis library (LibLouis.dll) from C#

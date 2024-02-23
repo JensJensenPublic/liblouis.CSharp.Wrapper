@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace liblouis.CSharp.Wrapper
+namespace LibLouisWrapper
 {
     public interface IClient
     {

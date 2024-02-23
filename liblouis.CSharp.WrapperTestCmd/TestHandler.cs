@@ -5,8 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
-using liblouis.CSharp.Wrapper;
-using liblouis.CSharp.WrapperTestCmd;
+using LibLouisWrapper;
 
 #pragma warning disable IDE0018 // Inline variable declaration
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using liblouis.CSharp.Wrapper;
+using LibLouisWrapper;
 
 namespace LibLouisWrapperTestCmd
 {

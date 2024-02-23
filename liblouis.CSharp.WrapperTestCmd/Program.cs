@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Net.NetworkInformation;
-using liblouis.CSharp.WrapperTestCmd;
+using LibLouisWrapper;
 
 namespace LibLouisWrapperTestCmd
 {
