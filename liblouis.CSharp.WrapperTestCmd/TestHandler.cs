@@ -46,8 +46,7 @@ namespace LibLouisWrapperTestCmd
 
         protected void Log(string message)
         {
-            string cm = Utilities.GetCallingMethod(0);
-            Console.WriteLine(string.Format("{0}{1}", cm, message));  
+            PlatformDependencies.Log(message);  
         }
 
         /// <summary>
@@ -56,8 +55,7 @@ namespace LibLouisWrapperTestCmd
         /// <param name="message"></param>
         public void OnWrapperLog(string message)
         {
-            string cm = Utilities.GetCallingMethod(3);
-            Console.WriteLine(string.Format("{0}{1}",cm,message));        
+            PlatformDependencies.OnWrapperLog(message);
         }
 
         /// <summary>
@@ -66,8 +64,7 @@ namespace LibLouisWrapperTestCmd
         /// <param name="message"></param>
         public void OnLibLouisLog(string message)
         {
-            string cm = Utilities.GetCallingMethod(2);
-            Console.WriteLine(string.Format("{0}{1}", cm, message));   
+            PlatformDependencies.OnLibLouisLog(message);     
         }
 
         protected TestHandler(string tableName, string testInputDir)
