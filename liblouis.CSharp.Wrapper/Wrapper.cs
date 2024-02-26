@@ -204,10 +204,12 @@ namespace LibLouisWrapper
             backTranslateStringTfe // Use the TypeFormEnum parameter
         }
 
+        TypeformEnum[] dummyTfe; // Dummy parameter
+
         public bool CharsToDots(string chars, out string dots) { return CommonNativeCall(NativeFunctionEnum.charsToDots, chars, out dots); }
         public bool DotsToChars(string dots, out string chars) { return CommonNativeCall(NativeFunctionEnum.dotsToChars, dots, out chars); }
         public bool TranslateString(string text, out string dots) { return CommonNativeCall(NativeFunctionEnum.translateString, text, out dots); }
-        public bool TranslateStringTFE(string text, out string dots, in TypeformEnum[] tfe) { return CommonNativeCall(NativeFunctionEnum.translateStringTfe, text, out dots, tfe, out TypeformEnum[] dummyTfe);}
+        public bool TranslateStringTFE(string text, out string dots, in TypeformEnum[] tfe) { return CommonNativeCall(NativeFunctionEnum.translateStringTfe, text, out dots, tfe, out dummyTfe);}
         public bool BackTranslateString(string dots, out string text) { return CommonNativeCall(NativeFunctionEnum.backTranslateString, dots, out text); }
         public bool BackTranslateStringTFE(string dots, out string text, out TypeformEnum[] tfe) { return CommonNativeCall(NativeFunctionEnum.backTranslateStringTfe, dots, out text, null, out tfe); }
 
@@ -290,7 +292,7 @@ namespace LibLouisWrapper
             {
                 throw new ArgumentException(nativeFunctionEnum.ToString());
             }
-            return CommonNativeCall(nativeFunctionEnum, input, out output, null, out TypeformEnum[]  dummyTfe);
+            return CommonNativeCall(nativeFunctionEnum, input, out output, null, out dummyTfe);
         }
 
         /// <summary>

@@ -22,12 +22,7 @@ namespace LibLouisWrapperTestCmd
         public void AddRange(TestResult that)
         {
             this.errorList.AddRange(that.errorList);
-            this.successes += that.successes;
-            if (that.AllDiffs.Diffs.Count != 0)
-            {
-                int r = 0;
-            }
-
+            this.successes += that.successes; 
             this.allDiffs.AddRange(that.allDiffs);
         }
 
