@@ -55,19 +55,7 @@ namespace LibLouisWrapperTestCmd
         public const TypeformEnum Italic = TypeformEnum.italic;
         public const TypeformEnum Underline = TypeformEnum.underline;
         public const TypeformEnum Bold = TypeformEnum.bold;
-
-        private TypeformEnum[] RepeatedTypeformEnum(TypeformEnum tfe, int count)
-        {
-
-            TypeformEnum[] result = new TypeformEnum[count];
-            for (int i = 0; (i < count); i++)
-            {
-                result[i] = tfe;
-            }
-            return result;
-        }
-
-
+          
         /// <summary>
         /// Tests the roundtrip TranslateString, BackTranslateString
         /// </summary>
@@ -84,7 +72,6 @@ namespace LibLouisWrapperTestCmd
             string newText;
             TypeformEnum[] typeFormsBack;
             ok = libLouisWrapper.BackTranslateStringTFE(dots, out newText, out typeFormsBack);
-#warning todo  Add logging info before calling LibLouisWrapper
             Log(FormatTranslateResultTFE("BackTranslateStringTFE", dots, ok, newText, typeFormsBack));
 
             bool equal = (0 == string.Compare(text, newText));

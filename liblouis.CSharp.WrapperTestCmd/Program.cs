@@ -110,8 +110,9 @@ namespace LibLouisWrapperTestCmd
                         overallLibLouisErrorCount += testHandler.GlobalLibLouisErrorCount;
                     }
 #endif
-
-#warning Add other languages here! 
+                    /////////////////////////////////////////
+                    // Add other languages here if needed! // 
+                    /////////////////////////////////////////
 
                     overallTestLoops++;
                 }

@@ -545,7 +545,7 @@ namespace LibLouisWrapper
         /// See https://stackoverflow.com/questions/75223488/delegate-getting-gc-even-after-pinning
         /// </summary>
         private static readonly Func myFunc = MyFunc;
-        private string tableNames;
+        private readonly string tableNames;
   
         /// <summary>
         /// Private constructor. Use Wrapper.Create() from the outside.
