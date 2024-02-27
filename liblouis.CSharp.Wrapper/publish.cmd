@@ -5,10 +5,16 @@ rem Copy the whole LibLouis directory from liblouis.CSharp.Wrapper\liblouis dire
 rem The LibLouisWrapper project expects to find it there.
 
 rem echo WARNING: -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-rem echo WARNING: LibLouisWrapper.Publish.cmd is currently disabled. It must be enabled on first build after initial pull from GitHub and when the Liblouis installation files have been changed!  
+rem echo WARNING: Publish.cmd is currently disabled. It must be enabled on first build after the initial pull from GitHub and when the Liblouis installation files have been changed!  
 rem echo WARNING: ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 
 rem exit
+
+echo -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo The Post-build event handler 'Liblouis.CSharp.Wrapper.Publish.cmd' is currently enabled.
+echo It MUST be enabled during the first successful first build after the initial pull from GitHub and when the Liblouis installation files have been changed!
+echo After the first successful build it is no longer needed and may be disabled by removing the "rem" from the exit-command above!
+echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 
 dir ..\..\..\liblouis.CSharp.Wrapper\liblouis
 

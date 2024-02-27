@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="publish.cmd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\liblouis.CSharp.Wrapper\liblouis.CSharp.Wrapper.csproj">
